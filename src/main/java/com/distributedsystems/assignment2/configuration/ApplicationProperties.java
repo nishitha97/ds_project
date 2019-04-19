@@ -6,7 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties(prefix = "", ignoreUnknownFields = false)
+@ConfigurationProperties(prefix = "")
 @PropertySource("classpath:application.properties")
 public class ApplicationProperties {
 
