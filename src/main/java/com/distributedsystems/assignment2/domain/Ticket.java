@@ -10,7 +10,7 @@ import java.util.Date;
 public class Ticket {
 
     @Id
-    private int ticketID;
+    private String ticketID;
 
     @NotNull
     private String userID;

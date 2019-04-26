@@ -11,8 +11,8 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "*",allowedHeaders = "*")
 @RestController
-@Validated
 @RequestMapping("/api/v1/tickets")
 public class TicketController {
 

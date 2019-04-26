@@ -33,11 +33,11 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public Optional<Ticket> getTicket(String ticketId) {
-        return ticketRepository.findById(Integer.parseInt(ticketId));
+        return ticketRepository.findById(ticketId);
     }
 
     @Override
     public void deleteTicket(String ticketId) {
-        ticketRepository.deleteById(Integer.parseInt(ticketId));
+        ticketRepository.deleteById(ticketId);
     }
 }

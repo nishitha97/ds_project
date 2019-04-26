@@ -9,7 +9,8 @@ import javax.validation.constraints.Size;
 public class User {
 
     @Id
-    private int id;
+    private String id;
+
     private String username;
     private String password;
     private String email;

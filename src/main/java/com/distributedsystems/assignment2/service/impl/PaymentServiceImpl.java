@@ -33,11 +33,11 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public Optional<Payment> getPayment(String paymentId) {
-        return paymentRepository.findById(Integer.parseInt(paymentId));
+        return paymentRepository.findById(paymentId);
     }
 
     @Override
     public void deletePayment(String paymentId) {
-       paymentRepository.deleteById(Integer.parseInt(paymentId));
+       paymentRepository.deleteById(paymentId);
     }
 }

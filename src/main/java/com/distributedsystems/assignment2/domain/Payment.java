@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 public class Payment {
 
     @Id
-    private int paymentId;
+    private String paymentId;
 
     @NotNull
     private String userId;

@@ -34,12 +34,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<User> getUser(String userId) {
-        return userRepository.findById(Integer.parseInt(userId));
+        return userRepository.findById(userId);
     }
 
     @Override
     public void deleteUser(String userId) {
-        userRepository.deleteById(Integer.parseInt(userId));
+        userRepository.deleteById(userId);
 
     }
 }
