@@ -1,9 +1,11 @@
 package com.distributedsystems.assignment2.controller;
 
+import com.distributedsystems.assignment2.domain.Payment;
 import com.distributedsystems.assignment2.domain.Ticket;
 import com.distributedsystems.assignment2.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,40 +21,40 @@ public class TicketController {
     @Autowired
     TicketService ticketService;
 
-    @ResponseStatus(HttpStatus.CREATED)
+
     @PostMapping()
-    public Ticket addTicket(@Valid @RequestBody Ticket ticket) {
+    public ResponseEntity<Ticket> addTicket(@Valid @RequestBody Ticket ticket) {
 
-        return ticketService.createTicket(ticket);
+        return ResponseEntity.status(HttpStatus.CREATED).body(ticketService.createTicket(ticket));
 
 
     }
 
-    @ResponseStatus(HttpStatus.OK)
+
     @PutMapping()
-    public Ticket updateTicket(@Valid @RequestBody Ticket ticket) {
+    public ResponseEntity<Ticket> updateTicket(@Valid @RequestBody Ticket ticket) {
 
-        return ticketService.updateTicket(ticket);
+        return ResponseEntity.status(HttpStatus.OK).body(ticketService.updateTicket(ticket));
 
 
     }
 
 
-    @ResponseStatus(HttpStatus.OK)
+
     @GetMapping()
-    public List<Ticket> getTickets() {
+    public ResponseEntity<List<Ticket>> getTickets() {
 
-        return ticketService.getAllTickets();
+        return ResponseEntity.status(HttpStatus.OK).body(ticketService.getAllTickets());
 
 
     }
 
 
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/{ticketId}")
-    public Optional<Ticket> getATicket(@PathVariable("ticketId") String ticketId) {
 
-        return ticketService.getTicket(ticketId);
+    @GetMapping("/{ticketId}")
+    public ResponseEntity<Optional<Ticket>> getATicket(@PathVariable("ticketId") String ticketId) {
+
+        return ResponseEntity.status(HttpStatus.OK).body(ticketService.getTicket(ticketId));
 
 
     }

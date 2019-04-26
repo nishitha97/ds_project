@@ -4,7 +4,7 @@ import com.distributedsystems.assignment2.domain.User;
 import com.distributedsystems.assignment2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,40 +19,37 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @ResponseStatus(HttpStatus.CREATED)
+
     @PostMapping()
-    public User addUser(@Valid @RequestBody User user) {
+    public ResponseEntity<User> addUser(@Valid @RequestBody User user) {
 
-        return userService.createUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(user));
 
 
     }
 
-    @ResponseStatus(HttpStatus.OK)
     @PutMapping()
-    public User updateUser(@Valid @RequestBody User user) {
+    public ResponseEntity<User> updateUser(@Valid @RequestBody User user) {
 
-        return userService.updateUser(user);
+        return ResponseEntity.status(HttpStatus.OK).body(userService.updateUser(user));
 
 
     }
 
 
-    @ResponseStatus(HttpStatus.OK)
     @GetMapping()
-    public List<User> getUsers() {
+    public ResponseEntity<List<User>> getUsers() {
 
-        return userService.getAllUsers();
+        return ResponseEntity.status(HttpStatus.OK).body(userService.getAllUsers());
 
 
     }
 
 
-    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{userId}")
-    public Optional<User> getAUser(@PathVariable("userId") String userId) {
+    public ResponseEntity<Optional<User>> getAUser(@PathVariable("userId") String userId) {
 
-        return userService.getUser(userId);
+        return ResponseEntity.status(HttpStatus.OK).body(userService.getUser(userId));
 
 
     }

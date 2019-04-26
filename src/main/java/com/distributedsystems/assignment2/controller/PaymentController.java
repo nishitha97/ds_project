@@ -4,7 +4,7 @@ import com.distributedsystems.assignment2.domain.Payment;
 import com.distributedsystems.assignment2.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -20,30 +20,29 @@ public class PaymentController {
     @Autowired
     PaymentService paymentService;
 
-    @ResponseStatus(HttpStatus.CREATED)
+
     @PostMapping()
-    public Payment addPayment(@Valid @RequestBody Payment payment) {
+    public ResponseEntity<Payment> addPayment(@Valid @RequestBody Payment payment) {
 
-        return paymentService.createPayment(payment);
+        return ResponseEntity.status(HttpStatus.CREATED).body(paymentService.createPayment(payment));
 
 
     }
 
-    @ResponseStatus(HttpStatus.OK)
     @PutMapping()
-    public Payment updatePayment(@Valid @RequestBody Payment payment) {
+    public ResponseEntity<Payment> updatePayment(@Valid @RequestBody Payment payment) {
 
-        return paymentService.updatePayment(payment);
+        return ResponseEntity.status(HttpStatus.OK).body(paymentService.updatePayment(payment));
 
 
     }
 
 
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping()
-    public List<Payment> getPayment() {
 
-        return paymentService.getAllPayments();
+    @GetMapping()
+    public ResponseEntity<List<Payment>> getPayment() {
+
+        return ResponseEntity.status(HttpStatus.OK).body(paymentService.getAllPayments());
 
 
     }
@@ -51,9 +50,9 @@ public class PaymentController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{paymentId}")
-    public Optional<Payment> getAPayment(@PathVariable("paymentId") String paymentId) {
+    public ResponseEntity<Optional<Payment>> getAPayment(@PathVariable("paymentId") String paymentId) {
 
-        return paymentService.getPayment(paymentId);
+        return ResponseEntity.status(HttpStatus.OK).body(paymentService.getPayment(paymentId));
 
 
     }
