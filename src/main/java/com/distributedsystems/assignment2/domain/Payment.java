@@ -10,31 +10,20 @@ public class Payment {
 
     @Id
     private String paymentId;
-
+    @NotNull
+    private String bookingId;
     @NotNull
     private String userId;
-
-    @NotNull
-    private String ticketId;
     private boolean isCreditCardPayment=false;
     private boolean isMobilePayment=false;
     private String paymentStatus;
 
-
-    public String getUserId() {
-        return userId;
+    public String getBookingId() {
+        return bookingId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getTicketId() {
-        return ticketId;
-    }
-
-    public void setTicketId(String ticketId) {
-        this.ticketId = ticketId;
+    public void setBookingId(String userId) {
+        this.bookingId = userId;
     }
 
     public boolean isCreditCardPayment() {
@@ -59,6 +48,14 @@ public class Payment {
 
     public void setPaymentStatus(String paymentStatus) {
         this.paymentStatus = paymentStatus;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
 
