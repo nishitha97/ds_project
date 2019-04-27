@@ -8,8 +8,13 @@ import javax.validation.constraints.Size;
 @Document(collection = "users")
 public class User {
 
+
     @Id
     private String id;
+
+    public String getId() {
+        return id;
+    }
 
     private String username;
     private String password;

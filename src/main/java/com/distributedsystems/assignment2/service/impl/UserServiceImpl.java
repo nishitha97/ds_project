@@ -1,12 +1,16 @@
 package com.distributedsystems.assignment2.service.impl;
 
+import com.distributedsystems.assignment2.domain.Session;
 import com.distributedsystems.assignment2.domain.User;
 import com.distributedsystems.assignment2.repository.UserRepository;
 import com.distributedsystems.assignment2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
+
 import java.util.List;
 import java.util.Optional;
 
