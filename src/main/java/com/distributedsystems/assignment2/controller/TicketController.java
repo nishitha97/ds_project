@@ -1,3 +1,4 @@
+/*
 package com.distributedsystems.assignment2.controller;
 
 import com.distributedsystems.assignment2.domain.Payment;
@@ -70,3 +71,4 @@ public class TicketController {
 
 
 }
+*/

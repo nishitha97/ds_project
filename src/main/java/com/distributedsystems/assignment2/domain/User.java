@@ -3,8 +3,12 @@ package com.distributedsystems.assignment2.domain;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ * Domain class for User object
+ */
 @Document(collection = "users")
 public class User {
 
@@ -20,6 +24,9 @@ public class User {
     private String password;
     private String email;
     private String creditCardNo;
+
+    @Size(max = 11)
+    private String nic;
 
     @Size(max = 11,min = 10)
     private String contactNo;
@@ -65,4 +72,11 @@ public class User {
         this.creditCardNo = creditCardNo;
     }
 
+    public String getNic() {
+        return nic;
+    }
+
+    public void setNic(String nic) {
+        this.nic = nic;
+    }
 }

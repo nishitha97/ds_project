@@ -29,7 +29,7 @@ public class SessionServiceImpl implements SessionService{
             sessionRepository.save(session);
             return ResponseEntity.status(HttpStatus.OK).body(user);
         }else{
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(user);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
     }
 }

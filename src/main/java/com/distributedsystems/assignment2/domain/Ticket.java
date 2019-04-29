@@ -1,3 +1,4 @@
+/*
 package com.distributedsystems.assignment2.domain;
 
 import org.springframework.data.annotation.Id;
@@ -112,5 +113,5 @@ public class Ticket {
     }
 
 
-
 }
+*/

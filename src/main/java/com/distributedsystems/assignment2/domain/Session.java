@@ -3,6 +3,9 @@ package com.distributedsystems.assignment2.domain;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * Domain class for Session object
+ */
 @Document(collection = "sessions")
 public class Session {
     @Id

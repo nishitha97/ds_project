@@ -15,17 +15,27 @@ import javax.validation.Valid;
 @CrossOrigin(origins = "*",allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1/booking")
+/**
+ * controller class to handle all booking services
+ *
+ * @author IT17006880
+ */
 public class BookingController {
 
     @Autowired
     BookingService bookingService;
 
-
+    /**
+     * controller to create a new booking
+     *
+     * @param booking Booking object
+     * @return ResponseEntity containing created booking object
+     */
     @PostMapping()
     public ResponseEntity<Booking> addBooking(@Valid @RequestBody Booking booking) {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(bookingService.createBooking(booking));
 
-
     }
+
 }

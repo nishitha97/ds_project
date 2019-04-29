@@ -12,6 +12,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import static springfox.documentation.builders.PathSelectors.regex;
 
+/**
+ * Swagger configuration properties
+ *
+ * run on http://localhost:8081/swagger-ui.html
+ */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {

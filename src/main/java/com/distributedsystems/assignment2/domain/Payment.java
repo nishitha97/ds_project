@@ -5,11 +5,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
 
+
+/**
+ * Domain class for Payment object
+ */
 @Document(collection = "payments")
 public class Payment {
 
     @Id
-    private String paymentId;
+    private String id;
     @NotNull
     private String bookingId;
     @NotNull

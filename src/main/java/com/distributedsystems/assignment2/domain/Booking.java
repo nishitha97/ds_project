@@ -3,6 +3,9 @@ package com.distributedsystems.assignment2.domain;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * Domain class for Booking object
+ */
 @Document(collection = "bookings")
 public class Booking {
 
@@ -58,8 +61,5 @@ public class Booking {
     public void setFrom(String from) {
         this.from = from;
     }
-
-
-
 
 }

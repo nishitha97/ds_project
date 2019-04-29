@@ -14,12 +14,22 @@ import javax.validation.Valid;
 @CrossOrigin(origins = "*",allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1/session")
+/**
+ * controller class to handle all session services
+ *
+ * @author IT17006880
+ */
 public class SessionController {
 
     @Autowired
     SessionService sessionService;
 
-
+    /**
+     * controller to handle validation of user credentials
+     *
+     * @param session Session object containing a username and password
+     * @return ResponseEntity containing the authenticated user,else returns an unauthorized HTTP response
+     */
     @PostMapping("/authenticate")
     public ResponseEntity<User> getAUser(@Valid @RequestBody Session session) {
 
