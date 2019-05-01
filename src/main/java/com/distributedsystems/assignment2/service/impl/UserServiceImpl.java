@@ -22,7 +22,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(@Valid User user) {
+
+        user.setCreditCardNo(replaceFirst13Digits(user.getCreditCardNo()));
         return userRepository.save(user);
+    }
+
+    //For security reasons only last 3 digits of credit card number will be stored in the database
+    //Also cvc number and account holders number will not be stored for security reasons
+    private String replaceFirst13Digits(String s){
+
+        return "****"+s.substring(13);
     }
 
     @Override
@@ -38,7 +47,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<User> getUser(String userId) {
-        return userRepository.findById(userId);
+        Optional<User> user=userRepository.findById(userId);
+        String creditCardNo=user.get().getCreditCardNo();
+        String last3digits=creditCardNo.substring(creditCardNo.length()-3);
+        user.get().setCreditCardNo(last3digits);
+        return user;
+
     }
 
     @Override
