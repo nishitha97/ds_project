@@ -49,6 +49,8 @@ public class UserServiceImpl implements UserService {
     public Optional<User> getUser(String userId) {
         Optional<User> user=userRepository.findById(userId);
         String creditCardNo=user.get().getCreditCardNo();
+
+        //retrieve only the last three digits from the credit card number
         String last3digits=creditCardNo.substring(creditCardNo.length()-3);
         user.get().setCreditCardNo(last3digits);
         return user;
