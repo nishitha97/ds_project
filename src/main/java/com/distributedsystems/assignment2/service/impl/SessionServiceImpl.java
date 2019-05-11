@@ -1,5 +1,6 @@
 package com.distributedsystems.assignment2.service.impl;
 
+import com.distributedsystems.assignment2.configuration.AuthenticationConfig;
 import com.distributedsystems.assignment2.domain.Session;
 import com.distributedsystems.assignment2.domain.User;
 import com.distributedsystems.assignment2.repository.SessionRepository;
@@ -20,10 +21,19 @@ public class SessionServiceImpl implements SessionService{
     @Autowired
     SessionRepository sessionRepository;
 
+    @Autowired
+    AuthenticationConfig authenticationConfig;
+
+
     @Override
     public ResponseEntity<User> getSession(@Valid Session session) {
 
-        User user=userRepository.findByUsernameAndPassword(session.getUsername(),session.getPassword());
+        //user password will be encrypted using Triple Data Encryption Algorithm
+        //since it is a symmetric Encryption Algorithm
+        //to check if it matches the encrypted value
+        //stored in the database
+        User user=userRepository.findByUsernameAndPassword(
+                session.getUsername(),authenticationConfig.encrypt(session.getPassword()));
 
         if(user!=null) {
             sessionRepository.save(session);

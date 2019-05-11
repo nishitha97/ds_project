@@ -1,5 +1,6 @@
 package com.distributedsystems.assignment2.service.impl;
 
+import com.distributedsystems.assignment2.configuration.AuthenticationConfig;
 import com.distributedsystems.assignment2.domain.Session;
 import com.distributedsystems.assignment2.domain.User;
 import com.distributedsystems.assignment2.repository.UserRepository;
@@ -20,9 +21,15 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    AuthenticationConfig authenticationConfig;
+
     @Override
     public User createUser(@Valid User user) {
 
+        //user password will be encrypted before storing using
+        //Triple Data Encryption Algorithm
+        user.setPassword(authenticationConfig.encrypt(user.getPassword()));
         user.setCreditCardNo(replaceFirst13Digits(user.getCreditCardNo()));
         return userRepository.save(user);
     }
