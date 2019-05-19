@@ -29,13 +29,14 @@ public class SessionServiceImpl implements SessionService{
     public ResponseEntity<User> getSession(@Valid Session session) {
 
         //user password will be encrypted using Triple Data Encryption Algorithm
-        //since it is a symmetric Encryption Algorithm
         //to check if it matches the encrypted value
         //stored in the database
         User user=userRepository.findByUsernameAndPassword(
                 session.getUsername(),authenticationConfig.encrypt(session.getPassword()));
 
         if(user!=null) {
+            //encrypt session password
+            session.setPassword(authenticationConfig.encrypt(session.getPassword()));
             sessionRepository.save(session);
             return ResponseEntity.status(HttpStatus.OK).body(user);
         }else{

@@ -3,17 +3,21 @@ package com.distributedsystems.assignment2.domain;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+
 /**
  * Domain class for Session object
  */
 @Document(collection = "sessions")
 public class Session {
     @Id
-    public String id;
+    private String id;
 
-    public String username;
+    private String username;
 
-    public String password;
+    private String password;
+
+    private Date loggedIn=new Date();
 
     public String getUsername() {
         return username;
@@ -29,6 +33,10 @@ public class Session {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Date getLoggedIn() {
+        return loggedIn;
     }
 
 }

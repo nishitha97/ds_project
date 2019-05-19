@@ -24,6 +24,16 @@ public class TrainDetails {
 
     private String platform;
 
+    private String price;
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price){
+        this.price=price;
+    }
+
     public String getTo() {
         return to;
     }
